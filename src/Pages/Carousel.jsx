@@ -1,22 +1,44 @@
-import React from 'react'
-import { makeStyles } from "@material-ui/core";
+import React, { useEffect, useState } from 'react';
+import { makeStyles } from "@material-ui/core/styles";
 import axios from "axios";
-import { useEffect, useState } from "react";
-import AliceCarousel from "react-alice-carousel";
+import AliceCarousel from 'react-alice-carousel';
 import { Link } from "react-router-dom";
-import { TrendingCoins } from "../../config/api";
-import { CryptoState } from "../../CryptoContext";
-import { numberWithCommas } from "../CoinsTable";
+import { TrendingCoins } from "../config/api";
+import { useCrypto } from "../CryptoContext";
+import { numberWithCommas } from "../Componets/CoinsTable";
+
+// Define useStyles for styling
+const useStyles = makeStyles((theme) => ({
+  carousel: {
+    height: "50%",
+    display: "flex",
+    alignItems: "center",
+  },
+  carouselItem: {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    cursor: "pointer",
+    textTransform: "uppercase",
+    color: "white",
+    textDecoration: "none", // Added to remove underline from links
+  },
+}));
 
 export const Carousel = () => {
-    const [trending, setTrending] = useState([]);
-  const { currency, symbol } = CryptoState();
+  const [trending, setTrending] = useState([]);
+  const { currency, symbol } = useCrypto();
+  const classes = useStyles();
 
+  // Fetch trending coins
   const fetchTrendingCoins = async () => {
-    const { data } = await axios.get(TrendingCoins(currency));
-
-    console.log(data);
-    setTrending(data);
+    try {
+      const { data } = await axios.get(TrendingCoins(currency));
+      console.log(data);
+      setTrending(data);
+    } catch (error) {
+      console.error("Failed to fetch trending coins:", error);
+    }
   };
 
   useEffect(() => {
@@ -24,29 +46,12 @@ export const Carousel = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currency]);
 
-  const useStyles = makeStyles((theme) => ({
-    carousel: {
-      height: "50%",
-      display: "flex",
-      alignItems: "center",
-    },
-    carouselItem: {
-      display: "flex",
-      flexDirection: "column",
-      alignItems: "center",
-      cursor: "pointer",
-      textTransform: "uppercase",
-      color: "white",
-    },
-  }));
-
-  const classes = useStyles();
-
+  // Map trending data to carousel items
   const items = trending.map((coin) => {
-    let profit = coin?.price_change_percentage_24h >= 0;
+    const profit = coin?.price_change_percentage_24h >= 0;
 
     return (
-      <Link className={classes.carouselItem} to={`/coins/${coin.id}`}>
+      <Link className={classes.carouselItem} to={`/coins/${coin.id}`} key={coin.id}>
         <img
           src={coin?.image}
           alt={coin.name}
@@ -58,7 +63,7 @@ export const Carousel = () => {
           &nbsp;
           <span
             style={{
-              color: profit > 0 ? "rgb(14, 203, 129)" : "red",
+              color: profit ? "rgb(14, 203, 129)" : "red",
               fontWeight: 500,
             }}
           >
@@ -82,20 +87,19 @@ export const Carousel = () => {
     },
   };
 
-    return (
+  return (
     <div className={classes.carousel}>
-    <AliceCarousel
-      mouseTracking
-      infinite
-      autoPlayInterval={1000}
-      animationDuration={1500}
-      disableDotsControls
-      disableButtonsControls
-      responsive={responsive}
-      items={items}
-      autoPlay
-    />
-  </div>
-);
-
-}
+      <AliceCarousel
+        mouseTracking
+        infinite
+        autoPlayInterval={1000}
+        animationDuration={1500}
+        disableDotsControls
+        disableButtonsControls
+        responsive={responsive}
+        items={items}
+        autoPlay
+      />
+    </div>
+  );
+};

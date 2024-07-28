@@ -1,9 +1,9 @@
-import { useState } from 'react'
+import  { useState } from 'react'
 import './App.css'
 import { HomePage } from './Pages/HomePage'
 import CoinPage from './Pages/CoinPage'
-import {Header} from './Componets/Header'
-import { BrowserRouter, Route } from "react-router-dom";
+import { Header } from "./Componets/Header"
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { makeStyles } from "@material-ui/core";
 
 const useStyles = makeStyles(() => ({
@@ -14,22 +14,22 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-
 function App() {
   const classes = useStyles();
 
   return (
     <>
-        <BrowserRouter>
-      <div className={classes.App}>
-        <Header />
-        <Route path="/" component={HomePage} exact />
-        <Route path="/coins/:id" component={CoinPage} exact />
-      </div>
-    </BrowserRouter>
-
+      <BrowserRouter>
+        <div className={classes.App}>
+          <Header />
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/coins/:id" element={<CoinPage />} />
+          </Routes>
+        </div>
+      </BrowserRouter>
     </>
   )
 }
 
-export default App
+export default App;
