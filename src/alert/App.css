@@ -1,0 +1,16 @@
+/* Opaque background for the body */
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #000; /* Solid black background */
+  color: #fff; /* White text */
+  margin: 0;
+  padding: 0;
+  display: flex; /* Use flexbox to center content */
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  height: 100vh; /* Full viewport height */
+}
+
+.App {
+  padding: 20px;
+}

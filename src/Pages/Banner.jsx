@@ -31,6 +31,8 @@ export const Banner = () => {
     const classes = useStyles();
 
     return (
+      <>
+      
     <div className={classes.banner}>
     <Container className={classes.bannerContent}>
       <div className={classes.tagline}>
@@ -40,10 +42,13 @@ export const Banner = () => {
             fontWeight: "bold",
             marginBottom: 15,
             fontFamily: "Montserrat",
+             
           }}
+       
         >
           Crypto Hunter
         </Typography>
+        
         <Typography
           variant="subtitle2"
           style={{
@@ -58,6 +63,6 @@ export const Banner = () => {
       <Carousel />
     </Container>
   </div>
-
+  </>
   )
 }

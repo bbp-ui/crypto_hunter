@@ -38,6 +38,7 @@ export const useCrypto = () => {
 export const CryptoProvider = ({ children }) => {
   const [currency, setCurrency] = useState("USD");
   const [symbol, setSymbol] = useState("$");
+  const [watchlist, setWatchlist] = useState([]); // State for the watchlist
 
   useEffect(() => {
     if (currency === "USD") setSymbol("$");
@@ -45,12 +46,25 @@ export const CryptoProvider = ({ children }) => {
     // Add more currencies as needed
   }, [currency]);
 
+  // Function to add a coin to the watchlist
+  const addToWatchlist = (coinId) => {
+    setWatchlist((prevWatchlist) => [...prevWatchlist, coinId]);
+  };
+
+  // Function to remove a coin from the watchlist
+  const removeFromWatchlist = (coinId) => {
+    setWatchlist((prevWatchlist) => 
+      prevWatchlist.filter((id) => id !== coinId)
+    );
+  };
+
   return (
-    <CryptoContext.Provider value={{ currency, setCurrency, symbol }}>
+    <CryptoContext.Provider value={{ currency, setCurrency, symbol, watchlist, addToWatchlist, removeFromWatchlist }}>
       {children}
     </CryptoContext.Provider>
   );
 };
+
 
 
 

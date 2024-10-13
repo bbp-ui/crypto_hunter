@@ -11,3 +11,238 @@ a {
   text-decoration: none;
   color: gold;
 }
+.ordered-list {
+  list-style: decimal;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  width: 50%; /* adjust the width as needed */
+  list-style: none;
+  text-align: center;
+  list-style: none;
+}
+.horizontal-li button {
+  background-color: #dfc113;
+  color: #0c0b0b;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+  display: inline-block;
+  margin: 0 10px;
+}
+
+.horizontal-li:first-child {
+  margin-left: -200px; /* add this to move the first list item 100px to the left */
+}
+
+.horizontal-li button:hover {
+  background-color: #555;
+}
+
+.horizontal-li button i {
+  margin-right: 10px;
+}
+
+span {
+  margin-left: 20px;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+  /* Container for sections */
+  .container {
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #e4f312f0; /* Dark yellow */
+  }
+  
+  /* Style for error messages */
+  .error-message {
+    color: red;
+    text-align: center;
+  }
+  
+  /* Menu styles */
+  .menu {
+    background-color: #000; /* Black background for menu */
+    padding: 15px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+  }
+  
+  .menu h1 {
+    color: #f39c12; /* Dark yellow title */
+    text-align: center;
+  }
+  
+  .menu nav ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .menu nav ul li {
+    margin: 10px 0;
+  }
+  
+  .menu nav ul li a {
+    color: #f39c12; /* Dark yellow links */
+    text-decoration: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+  }
+  
+  .menu nav ul li a:hover {
+    background-color: rgba(243, 156, 18, 0.2); /* Lighter hover effect */
+  }
+  
+  /* Add yellow box around the alert form */
+  /* PriceAlertForm.css */
+.alert-form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #22223c;
+}
+
+.alert-form {
+  background: gold;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+  width: 100%;
+  height: 500px;
+  width: 600px;
+}
+
+.alert-form h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.alert-form input,
+.alert-form select,
+.alert-form button {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.alert-form input:focus,
+.alert-form select:focus {
+  border-color: #4a90e2;
+  outline: none;
+  box-shadow: 0 0 8px rgba(74, 144, 226, 0.2);
+}
+
+.alert-form button {
+  background-color: #4a90e2;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  border: none;
+  transition: background-color 0.3s;
+}
+
+.alert-form button:hover {
+  background-color: #357ABD;
+}
+
+.error-message {
+  color: red;
+  text-align: center;
+}
+/* Apply grey background for the entire screen */
+body, html {
+  background-color: #2c2c2c;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+ /* Apply grey background for the entire screen */
+body, html {
+  background-color: #2c2c2c;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+.crypto-news-container {
+  background-color: #2c2c2c; /* Matches the body background color */
+  padding: 20px;
+  color: #fff;
+}
+
+
+.news-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px; /* Increased gap between containers */
+  margin-top: 20px; /* Adjust as needed */
+  justify-content: center;
+}
+
+.news-card {
+  background-color: #dbb648; /* Light golden color */
+  color: #000;
+  padding: 20px; /* Increased padding for more space inside the cards */
+  border-radius: 8px; /* Slightly increased border radius */
+  width: 300px; /* Fixed width */
+  text-align: center;
+  height: 370px; /* Increased height */
+  margin: 20px; /* Added margin to increase the gap between containers */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Optional: Add shadow for better visibility */
+}
+
+.news-image {
+  width: 100%;
+  height: 150px; /* Increased the image height */
+  object-fit: cover; /* Maintain aspect ratio */
+}
+
+.news-title {
+  text-decoration: none;
+  color: #000; /* Change this color as needed */
+  font-weight: bold;
+}
+
+.news-title:hover {
+  text-decoration: underline; /* Add underline on hover for better UX */
+}
+
+.news-card p {
+  margin-top: 10px;
+  font-size: 18px; /* Increased font size */
+  font-weight: bold;
+}
+
+
+.description-box {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: #fff;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  display: none;
+}
+
+.description-content {
+  font-size: 14px;
+  color: #333;
+}
+
+.news-image:hover + .description-box {
+  display: block;
+}
